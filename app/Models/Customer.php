@@ -39,4 +39,6 @@ class Customer extends Model implements AuthenticatableContract, JWTSubject
     {
         return [];
     }
+
+    
 } 

@@ -36,25 +36,20 @@ class RoleMiddleware
      */
     public function handle($request, Closure $next, $role = null)
     {
-        // Check if user is authenticated
+      
         if ($this->auth->guest()) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return response()->json(['message' => 'Unauthorized - Chưa đăng nhập'], 401);
         }
 
-        // Get authenticated user
+      
         $user = $this->auth->user();
         
-        // Log for debugging
-        Log::info('Role Check', [
-            'user_id' => $user->id,
-            'user_role' => $user->role,
-            'required_role' => $role
-        ]);
+     
 
-        // Compare roles as integers
+      
         if ((int)$user->role !== (int)$role) {
             return response()->json([
-                'message' => 'Forbidden - Invalid role',
+                'message' => 'Vai trò không hợp lệ',
                 'debug' => [
                     'user_role' => (int)$user->role,
                     'required_role' => (int)$role

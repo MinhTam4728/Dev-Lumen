@@ -25,6 +25,7 @@
  *     securityScheme="bearerAuth",
  *     type="http",
  *     scheme="bearer",
- *     bearerFormat="JWT"
+ *     bearerFormat="JWT",
+ * description="Nhập token JWT vào đây"
  * )
  */
